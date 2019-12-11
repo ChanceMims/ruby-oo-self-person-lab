@@ -2,7 +2,7 @@
 class Person
     @@people = []
 
-    attr_reader :name, :bank_account, :clean, :happiness
+    attr_reader :name, :clean, :happiness, :bank_account
 
     def initialize(name)
         @name = name
@@ -13,6 +13,11 @@ class Person
 
     def clean?
         @clean > 7
+    end
+    
+    def happiness=(points)
+        points = 0 if points < 0
+        points > 10 ? @happiness = 10 : @happiness = points
     end
 
     def happy?
@@ -27,6 +32,10 @@ class Person
     def take_bath
         @clean >= 6 ? @clean = 10 : @clean += 4
         "♪ Rub-a-dub just relaxing in the tub ♫"
+    end
+
+    def bank_account=(ammount)
+        @bank_account += ammount
     end
 
 end
